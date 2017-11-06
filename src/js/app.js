@@ -7,9 +7,6 @@ let result = 0;
 
 calc.addEventListener('click', function(e) {
   switch (e.target.textContent) {
-    case '0':
-      console.log('0');
-      break;
     case ',':
       console.log(',');
       break;
@@ -40,8 +37,7 @@ calc.addEventListener('click', function(e) {
       operation = e.target.textContent;
       break;
     case 'C':
-      firstVal = '';
-      secondVal = '';
+      zeroOut();
       display.textContent = 0;
       break;
     case '+/-':
@@ -79,4 +75,12 @@ const printResult = (op) => {
   }
 
   display.textContent = result;
+
+  zeroOut();
+}
+
+const zeroOut = () => {
+  firstVal = '';
+  secondVal = '';
+  operation = '';
 }
