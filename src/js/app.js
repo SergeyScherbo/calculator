@@ -5,10 +5,10 @@ let secondVal = '';
 let operation = '';
 let result = 0;
 
-calc.addEventListener('click', function(e) {
+calc.addEventListener('click', (e) => {
   switch (e.target.textContent) {
     case ',':
-      console.log(',');
+      makeDecimal(e.target.textContent);
       break;
     case '=':
       printResult(operation);
@@ -52,6 +52,12 @@ calc.addEventListener('click', function(e) {
 });
 
 const printFirstVal = (num) => {
+  if (firstVal.toString().indexOf('.') !== -1) {
+    firstVal += num;
+    firstVal = parseFloat(firstVal);
+    display.textContent = firstVal;
+    return;
+  }
   firstVal += num;
   firstVal = parseInt(firstVal);
   display.textContent = firstVal;
@@ -83,4 +89,14 @@ const zeroOut = () => {
   firstVal = '';
   secondVal = '';
   operation = '';
+}
+
+const makeDecimal = (sym) => {
+  if (firstVal === '') {
+    firstVal += '0.';
+    display.textContent = firstVal;
+  } else if (firstVal !== '') {
+    firstVal += '.';
+    display.textContent = firstVal;
+  }
 }
