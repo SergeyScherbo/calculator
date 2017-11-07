@@ -97,7 +97,7 @@ var makeDecimal = function makeDecimal(sym) {
   if (firstVal === '') {
     firstVal += '0.';
     display.textContent = firstVal;
-  } else if (firstVal !== '') {
+  } else if (firstVal !== '' && firstVal.toString().indexOf('.') === -1) {
     firstVal += '.';
     display.textContent = firstVal;
   }
